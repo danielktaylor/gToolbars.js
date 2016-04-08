@@ -1,0 +1,213 @@
+<html>
+	<head>
+		<title>gToolbars</title>
+
+    <!-- Material Design Lite for Tooltips -->
+    <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+
+		<!-- jQuery -->
+		<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+
+    <!-- Toolbar Library -->
+    <link rel="stylesheet" type="text/css" href="gToolbars-0.2.0.css">
+		<script defer src="gToolbars-0.2.0.js"></script>
+
+    <style type="text/css">
+			/* arbitrary div container for the toolbar */
+      #container {
+        width: 80%;
+        height: 200px;
+				background: #EEEEEE;
+				border: 1px solid #BDBDBD;
+				border-top: 0px;
+				margin: auto;
+      }
+
+			#toggle-bold {
+				margin-left: 100px;
+			}
+    </style>
+
+		<script>
+			/* sample event handlers for toolbar buttons */
+			$(function() {
+			  registerButton($("#toolbar-undo"), function() {
+			      console.log("pressed undo");
+			    });
+
+			  registerButton($("#toolbar-circle"), function() {
+			      console.log("insert circle");
+			    });
+
+			  registerToggleButton($("#toolbar-bold"), function() {
+			      console.log("set strong font weight");
+			    }, function() {
+			      console.log("set normal font weight");
+			    });
+
+			  $("#toggle-bold").click(function() {
+			      trigger($("#toolbar-bold"), true);
+			    });
+			});
+		</script>
+
+	</head>
+	<body>
+
+		<br/><br/>
+
+	  <div id="container">
+
+      <div class="gt-toolbar">
+
+        <div id="toolbar-undo" class="gt-item"></div>
+        <div class="mdl-tooltip mdl-tooltip--large gt-noselect" for="toolbar-undo">Undo</div>
+
+        <div id="toolbar-redo" class="gt-item"></div>
+        <div class="mdl-tooltip mdl-tooltip--large gt-noselect" for="toolbar-redo">Redo</div>
+
+        <div class="gt-separator"></div>
+
+        <div id="toolbar-text" class="gt-item"></div>
+        <div class="mdl-tooltip mdl-tooltip--large gt-noselect" for="toolbar-text">Insert Text</div>
+
+        <div id="toolbar-shape" class="gt-item gt-dropdown">
+          <div class="gt-arrow"></div>
+
+          <div class="gt-submenu gt-noselect gt-noshow">
+            <div class="gt-submenu-item" id="toolbar-circle">
+              <img src="images/circle.png" class="gt-submenu-icon">
+              Circle
+            </div>
+            <div class="gt-submenu-item" id="toolbar-rectangle">
+              <img src="images/rectangle.png" class="gt-submenu-icon">
+              Rectangle
+            </div>
+          </div><!-- /toolbar-submenu -->
+        </div><!-- /toolbar-shape -->
+        <div class="mdl-tooltip mdl-tooltip--large gt-noselect" for="toolbar-shape">Insert Shape</div>
+
+        <div class="gt-separator"></div>
+
+        <div id="toolbar-arrange" class="gt-item gt-dropdown gt-noselect">
+          Arrange
+          <div class="gt-arrow"></div>
+
+          <div class="gt-submenu gt-noselect gt-noshow">
+            <div class="gt-submenu-item" id="toolbar-send-backward">
+              <img src="images/send-backward.png" class="gt-submenu-icon">
+              Send Backward
+            </div>
+            <div class="gt-submenu-item" id="toolbar-bring-forward">
+              <img src="images/bring-forward.png" class="gt-submenu-icon">
+              Bring Forward
+            </div>
+          </div><!-- /toolbar-submenu -->
+
+        </div><!-- /toolbar-arrange -->
+        <div class="mdl-tooltip mdl-tooltip--large gt-noselect" for="toolbar-arrange">Arrange Objects</div>
+
+        <div class="gt-separator"></div>
+
+        <div id="toolbar-font-size" class="gt-item gt-input">
+          <input type="text" id="font-size" maxlength="3" class="gt-text-input">
+          <div class="gt-arrow"></div>
+        </div>
+        <div class="mdl-tooltip mdl-tooltip--large gt-noselect" for="toolbar-font-size">Font Size</div>
+
+        <div class="gt-separator"></div>
+
+        <div id="toolbar-font-family" class="gt-item gt-dropdown gt-noselect">
+          <span id="current-font"></span>
+          <div class="gt-arrow"></div>
+
+          <div class="gt-submenu gt-noselect gt-scrolling gt-noshow">
+            <div class="gt-submenu-item">
+              <span style="font-family: 'Arial'">Arial</span>
+            </div>
+						<div class="gt-submenu-item">
+							<span style="font-family: 'Tahoma'">Tahoma</span>
+						</div>
+						<div class="gt-submenu-item">
+							<span style="font-family: 'Courier'">Courier</span>
+						</div>
+						<div class="gt-submenu-item">
+							<span style="font-family: 'Helvetica'">Helvetica</span>
+						</div>
+						<div class="gt-submenu-item">
+							<span style="font-family: 'monospace'">Monospace</span>
+						</div>
+						<div class="gt-submenu-item">
+							<span style="font-family: 'Arial'">Arial</span>
+						</div>
+						<div class="gt-submenu-item">
+							<span style="font-family: 'Tahoma'">Tahoma</span>
+						</div>
+						<div class="gt-submenu-item">
+							<span style="font-family: 'Courier'">Courier</span>
+						</div>
+						<div class="gt-submenu-item">
+							<span style="font-family: 'Helvetica'">Helvetica</span>
+						</div>
+						<div class="gt-submenu-item">
+							<span style="font-family: 'monospace'">Monospace</span>
+						</div>
+						<div class="gt-submenu-item">
+							<span style="font-family: 'Arial'">Arial</span>
+						</div>
+						<div class="gt-submenu-item">
+							<span style="font-family: 'Tahoma'">Tahoma</span>
+						</div>
+						<div class="gt-submenu-item">
+							<span style="font-family: 'Courier'">Courier</span>
+						</div>
+						<div class="gt-submenu-item">
+							<span style="font-family: 'Helvetica'">Helvetica</span>
+						</div>
+						<div class="gt-submenu-item">
+							<span style="font-family: 'monospace'">Monospace</span>
+						</div>
+          </div><!-- /toolbar-submenu -->
+
+        </div>
+        <div class="mdl-tooltip mdl-tooltip--large gt-noselect" for="toolbar-font-family">Font</div>
+
+        <div class="gt-separator"></div>
+
+        <div id="toolbar-bold" class="gt-item"></div>
+        <div class="mdl-tooltip mdl-tooltip--large gt-noselect" for="toolbar-bold">Bold</div>
+
+        <div id="toolbar-italics" class="gt-item"></div>
+        <div class="mdl-tooltip mdl-tooltip--large gt-noselect" for="toolbar-italics">Italics</div>
+
+        <div id="toolbar-underline" class="gt-item"></div>
+        <div class="mdl-tooltip mdl-tooltip--large gt-noselect" for="toolbar-underline">Underline</div>
+
+        <div class="gt-separator"></div>
+
+        <div id="toolbar-fill-color" class="gt-item gt-dropdown">
+          <div class="gt-arrow"></div>
+        </div>
+        <div class="mdl-tooltip mdl-tooltip--large gt-noselect" for="toolbar-fill-color">Fill Color</div>
+
+        <div id="toolbar-effects" class="gt-item gt-dropdown">
+          <div class="gt-arrow"></div>
+
+          <div class="gt-submenu gt-noselect gt-noshow gt-no-auto-close">
+
+            <p>PUT STUFF HERE</p>
+
+          </div>
+
+        </div>
+        <div class="mdl-tooltip mdl-tooltip--large gt-noselect" for="toolbar-effects">Effects</div>
+
+      </div><!-- /toolbar -->
+    </div><!-- /container -->
+
+		<br/><br/>
+		<button id="toggle-bold">Toggle Bold</button>
+
+	</body>
+</html>
