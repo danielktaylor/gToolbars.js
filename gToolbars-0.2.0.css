@@ -1,40 +1,4 @@
-#toolbar-arrange {
-  width: 70px;
-  padding-left: 5px; }
-
-#toolbar-font-family {
-  width: 100px;
-  padding-left: 5px; }
-
-/* --- Toolbar Icons --- */
-#toolbar-undo {
-  background-image: url("./images/undo.png"); }
-
-#toolbar-redo {
-  background-image: url("./images/redo.png"); }
-
-#toolbar-text {
-  background-image: url("./images/insert-text.png"); }
-
-#toolbar-shape {
-  background-image: url("./images/shapes.png"); }
-
-#toolbar-bold {
-  background-image: url("./images/bold.png"); }
-
-#toolbar-italics {
-  background-image: url("./images/italics.png"); }
-
-#toolbar-underline {
-  background-image: url("./images/underline.png"); }
-
-#toolbar-fill-color {
-  background-image: url("./images/fill-color.png"); }
-
-#toolbar-effects {
-  background-image: url("./images/effects.png"); }
-
-/* --- toolbar utility classes --- */
+/* --- utility classes --- */
 .gt-noselect {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -61,7 +25,7 @@
 
 .gt-item {
   float: left;
-  width: 26px;
+  min-width: 26px;
   height: 26px;
   margin-top: 3px;
   background-size: 24px 24px;
@@ -94,6 +58,9 @@
   .gt-item-active:active {
     border: 1px solid #CCCCCC;
     box-shadow: 1px 1px 2px #b1b1b1 inset; }
+
+.gt-title {
+  padding-left: 5px; }
 
 .gt-separator {
   float: left;
@@ -132,7 +99,7 @@
     background-color: white;
     border: 1px solid #0096FD; }
 
-/* --- toolbar submenu --- */
+/* --- submenus --- */
 .gt-submenu {
   position: absolute;
   background-color: white;

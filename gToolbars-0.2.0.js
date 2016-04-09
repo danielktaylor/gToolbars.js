@@ -67,10 +67,10 @@ $('.gt-dropdown').each(function(i, obj) {
       }
 
       closeSubmenu(button);
-      $(document).unbind("click.submenu");
+      $(document).unbind("click.gt-submenu");
     } else {
       // We're opening the submenu
-      $(document).trigger("click.submenu", true);
+      $(document).trigger("click.gt-submenu", true); // close other submenus
 
       button.addClass("gt-item-active");
       $(".mdl-tooltip").addClass("gt-noshow");
@@ -80,13 +80,18 @@ $('.gt-dropdown').each(function(i, obj) {
       popup.css({top: x, left: y});
       popup.removeClass("gt-noshow");
 
-      $(document).bind("click.submenu", function(event, noTooltips) {
+      $(document).bind("click.gt-submenu", function(event, noTooltips) {
         if (event.target.id === button.attr('id')) {
           return;
+        } else if ($(event.target).hasClass("gt-title")) {
+          var closestButton = $(event.target).closest(".gt-dropdown")[0];
+          if (closestButton.id === button.attr('id')) {
+            return;
+          }
         }
 
         closeSubmenu(button, noTooltips);
-        $(document).unbind("click.submenu");
+        $(document).unbind("click.gt-submenu");
       });
     }
   });

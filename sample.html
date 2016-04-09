@@ -27,6 +27,54 @@
 			#toggle-bold {
 				margin-left: 100px;
 			}
+
+			/* --- Button Sizes --- */
+
+			#toolbar-arrange {
+			  width: 70px;
+			}
+
+			#toolbar-font-family {
+			  width: 100px;
+			}
+
+			/* --- Toolbar Icons --- */
+
+			#toolbar-undo {
+			  background-image: url("./images/undo.png");
+			}
+
+			#toolbar-redo {
+			  background-image: url("./images/redo.png");
+			}
+
+			#toolbar-text {
+			  background-image: url("./images/insert-text.png");
+			}
+
+			#toolbar-shape {
+			  background-image: url("./images/shapes.png");
+			}
+
+			#toolbar-bold {
+			  background-image: url("./images/bold.png");
+			}
+
+			#toolbar-italics {
+			  background-image: url("./images/italics.png");
+			}
+
+			#toolbar-underline {
+			  background-image: url("./images/underline.png");
+			}
+
+			#toolbar-fill-color {
+			  background-image: url("./images/fill-color.png");
+			}
+
+			#toolbar-effects {
+			  background-image: url("./images/effects.png");
+			}
     </style>
 
 		<script>
@@ -91,7 +139,7 @@
         <div class="gt-separator"></div>
 
         <div id="toolbar-arrange" class="gt-item gt-dropdown gt-noselect">
-          Arrange
+          <span class="gt-title">Arrange</span>
           <div class="gt-arrow"></div>
 
           <div class="gt-submenu gt-noselect gt-noshow">
@@ -119,7 +167,7 @@
         <div class="gt-separator"></div>
 
         <div id="toolbar-font-family" class="gt-item gt-dropdown gt-noselect">
-          <span id="current-font"></span>
+          <span class="gt-title" id="current-font">Test</span>
           <div class="gt-arrow"></div>
 
           <div class="gt-submenu gt-noselect gt-scrolling gt-noshow">
