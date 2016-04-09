@@ -5,7 +5,7 @@ Generating CSS:
 
 ### Open Issues
 
-- [x] Minimize javascript
+- [x] ~~Minimize javascript~~
 - [ ] Remove Material Design Lite dependency by implementing tooltips
 - [ ] Remove jQuery dependency
 - [ ] Implement CommonJS and AMD compatibility
