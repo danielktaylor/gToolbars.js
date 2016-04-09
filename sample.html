@@ -78,8 +78,8 @@
     </style>
 
 		<script>
-			/* sample event handlers for toolbar buttons */
 			$(function() {
+				/* sample event handlers for toolbar buttons */
 			  registerButton($("#toolbar-undo"), function() {
 			      console.log("pressed undo");
 			    });
@@ -97,6 +97,12 @@
 			  $("#toggle-bold").click(function() {
 			      trigger($("#toolbar-bold"), true);
 			    });
+
+				/* programmatically adding items to a dropdown */
+				var menu = $("#toolbar-font-family > .gt-submenu");
+				for (i = 0; i < 10; i++) {
+					menu.append("<div class='gt-submenu-item'><span>Monospace</span></div>");
+				}
 			});
 		</script>
 
@@ -172,50 +178,8 @@
 
           <div class="gt-submenu gt-noselect gt-scrolling gt-noshow">
             <div class="gt-submenu-item">
-              <span style="font-family: 'Arial'">Arial</span>
+							<span>Arial</span>
             </div>
-						<div class="gt-submenu-item">
-							<span style="font-family: 'Tahoma'">Tahoma</span>
-						</div>
-						<div class="gt-submenu-item">
-							<span style="font-family: 'Courier'">Courier</span>
-						</div>
-						<div class="gt-submenu-item">
-							<span style="font-family: 'Helvetica'">Helvetica</span>
-						</div>
-						<div class="gt-submenu-item">
-							<span style="font-family: 'monospace'">Monospace</span>
-						</div>
-						<div class="gt-submenu-item">
-							<span style="font-family: 'Arial'">Arial</span>
-						</div>
-						<div class="gt-submenu-item">
-							<span style="font-family: 'Tahoma'">Tahoma</span>
-						</div>
-						<div class="gt-submenu-item">
-							<span style="font-family: 'Courier'">Courier</span>
-						</div>
-						<div class="gt-submenu-item">
-							<span style="font-family: 'Helvetica'">Helvetica</span>
-						</div>
-						<div class="gt-submenu-item">
-							<span style="font-family: 'monospace'">Monospace</span>
-						</div>
-						<div class="gt-submenu-item">
-							<span style="font-family: 'Arial'">Arial</span>
-						</div>
-						<div class="gt-submenu-item">
-							<span style="font-family: 'Tahoma'">Tahoma</span>
-						</div>
-						<div class="gt-submenu-item">
-							<span style="font-family: 'Courier'">Courier</span>
-						</div>
-						<div class="gt-submenu-item">
-							<span style="font-family: 'Helvetica'">Helvetica</span>
-						</div>
-						<div class="gt-submenu-item">
-							<span style="font-family: 'monospace'">Monospace</span>
-						</div>
           </div><!-- /toolbar-submenu -->
 
         </div>

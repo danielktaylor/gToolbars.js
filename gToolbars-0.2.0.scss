@@ -133,6 +133,7 @@ $toolbar-border-color: #BDBDBD;
 .gt-submenu {
   position: absolute;
   background-color: white;
+  min-width: 100px;
   top: -100px;
   left: -100px;
   z-index: 5;
