@@ -6,6 +6,7 @@ Generating CSS:
 ### Open Issues
 
 - [x] ~~Minimize javascript~~
+- [ ] Switch to a single PNG image containing all icons
 - [ ] Remove Material Design Lite dependency by implementing tooltips
 - [ ] Remove jQuery dependency
 - [ ] Implement CommonJS and AMD compatibility

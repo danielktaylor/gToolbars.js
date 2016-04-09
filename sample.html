@@ -1,117 +1,117 @@
 <html>
-	<head>
-		<title>gToolbars</title>
+  <head>
+    <title>gToolbars</title>
 
     <!-- Material Design Lite for Tooltips -->
     <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.indigo-pink.min.css">
     <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
 
-		<!-- jQuery -->
-		<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
 
     <!-- Toolbar Library -->
     <link rel="stylesheet" type="text/css" href="gToolbars-0.2.0.css">
-		<script defer src="gToolbars-0.2.0.js"></script>
+    <script defer src="gToolbars-0.2.0.js"></script>
 
     <style type="text/css">
-			/* arbitrary div container for the toolbar */
+      /* arbitrary div container for the toolbar */
       #container {
         width: 80%;
         height: 200px;
-				background: #EEEEEE;
-				border: 1px solid #BDBDBD;
-				border-top: 0px;
-				margin: auto;
+        background: #EEEEEE;
+        border: 1px solid #BDBDBD;
+        border-top: 0px;
+        margin: auto;
       }
 
-			#toggle-bold {
-				margin-left: 100px;
-			}
+      #toggle-bold {
+        margin-left: 100px;
+      }
 
-			/* --- Button Sizes --- */
+      /* --- Button Sizes --- */
 
-			#toolbar-arrange {
-			  width: 70px;
-			}
+      #toolbar-arrange {
+        width: 70px;
+      }
 
-			#toolbar-font-family {
-			  width: 100px;
-			}
+      #toolbar-font-family {
+        width: 100px;
+      }
 
-			/* --- Toolbar Icons --- */
+      /* --- Toolbar Icons --- */
 
-			#toolbar-undo {
-			  background-image: url("./images/undo.png");
-			}
+      #toolbar-undo {
+        background-image: url("./images/undo.png");
+      }
 
-			#toolbar-redo {
-			  background-image: url("./images/redo.png");
-			}
+      #toolbar-redo {
+        background-image: url("./images/redo.png");
+      }
 
-			#toolbar-text {
-			  background-image: url("./images/insert-text.png");
-			}
+      #toolbar-text {
+        background-image: url("./images/insert-text.png");
+      }
 
-			#toolbar-shape {
-			  background-image: url("./images/shapes.png");
-			}
+      #toolbar-shape {
+        background-image: url("./images/shapes.png");
+      }
 
-			#toolbar-bold {
-			  background-image: url("./images/bold.png");
-			}
+      #toolbar-bold {
+        background-image: url("./images/bold.png");
+      }
 
-			#toolbar-italics {
-			  background-image: url("./images/italics.png");
-			}
+      #toolbar-italics {
+        background-image: url("./images/italics.png");
+      }
 
-			#toolbar-underline {
-			  background-image: url("./images/underline.png");
-			}
+      #toolbar-underline {
+        background-image: url("./images/underline.png");
+      }
 
-			#toolbar-fill-color {
-			  background-image: url("./images/fill-color.png");
-			}
+      #toolbar-fill-color {
+        background-image: url("./images/fill-color.png");
+      }
 
-			#toolbar-effects {
-			  background-image: url("./images/effects.png");
-			}
+      #toolbar-effects {
+        background-image: url("./images/effects.png");
+      }
     </style>
 
-		<script>
-			$(function() {
-				/* sample event handlers for toolbar buttons */
-			  registerButton($("#toolbar-undo"), function() {
-			      console.log("pressed undo");
-			    });
+    <script>
+      $(function() {
+        /* sample event handlers for toolbar buttons */
+        registerButton($("#toolbar-undo"), function() {
+            console.log("pressed undo");
+          });
 
-			  registerButton($("#toolbar-circle"), function() {
-			      console.log("insert circle");
-			    });
+        registerButton($("#toolbar-circle"), function() {
+            console.log("insert circle");
+          });
 
-			  registerToggleButton($("#toolbar-bold"), function() {
-			      console.log("set strong font weight");
-			    }, function() {
-			      console.log("set normal font weight");
-			    });
+        registerToggleButton($("#toolbar-bold"), function() {
+            console.log("set strong font weight");
+          }, function() {
+            console.log("set normal font weight");
+          });
 
-			  $("#toggle-bold").click(function() {
-			      trigger($("#toolbar-bold"), true);
-			    });
+        $("#toggle-bold").click(function() {
+            trigger($("#toolbar-bold"), true);
+          });
 
-				/* programmatically adding items to a dropdown */
-				var menu = $("#toolbar-font-family > .gt-submenu");
-				for (i = 0; i < 10; i++) {
-					menu.append("<div class='gt-submenu-item'><span>Monospace</span></div>");
-				}
-			});
-		</script>
+        /* programmatically adding items to a dropdown */
+        var menu = $("#toolbar-font-family > .gt-submenu");
+        for (i = 0; i < 10; i++) {
+          menu.append("<div class='gt-submenu-item'><span>Monospace</span></div>");
+        }
+      });
+    </script>
 
-	</head>
-	<body>
+  </head>
+  <body>
 
-		<br/><br/>
+    <br/><br/>
 
-	  <div id="container">
+    <div id="container">
 
       <div class="gt-toolbar">
 
@@ -178,7 +178,7 @@
 
           <div class="gt-submenu gt-noselect gt-scrolling gt-noshow">
             <div class="gt-submenu-item gt-default">
-							<span>Arial</span>
+              <span>Arial</span>
             </div>
           </div><!-- /toolbar-submenu -->
 
@@ -218,8 +218,8 @@
       </div><!-- /toolbar -->
     </div><!-- /container -->
 
-		<br/><br/>
-		<button id="toggle-bold">Toggle Bold</button>
+    <br/><br/>
+    <button id="toggle-bold">Toggle Bold</button>
 
-	</body>
+  </body>
 </html>
