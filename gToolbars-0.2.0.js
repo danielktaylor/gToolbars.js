@@ -1,14 +1,10 @@
 function registerButton(btn, handler) {
-
   // TODO remember handlers
-
   $(btn).click(handler);
 }
 
 function registerToggleButton(btn, onHandler, offHandler) {
-
   // TODO remember handlers
-
   $(btn).click(function() {
     if ($(btn).hasClass("gt-item-active")) {
       $(btn).removeClass("gt-item-active");
@@ -22,7 +18,12 @@ function registerToggleButton(btn, onHandler, offHandler) {
 
 // Programmatically press buttons
 
-function trigger(btn, callHandler) {
+function toggle(btn, callHandler) {
+  if ($(btn).hasClass("gt-dropdown")) {
+    handleDropdownClick(btn, null);
+    return;
+  }
+
   if ($(btn).hasClass("gt-item-active")) {
     $(btn).removeClass("gt-item-active");
     if (callHandler === true) {
@@ -37,16 +38,30 @@ function trigger(btn, callHandler) {
 }
 
 function triggerActivate(btn, callHandler) {
-  $(btn).addClass("gt-item-active");
-  if (callHandler === true) {
-    // TODO onHandler();
+  if ($(btn).hasClass("gt-dropdown") && !$(btn).hasClass("gt-item-active")) {
+    handleDropdownClick(btn, null);
+    return;
+  }
+
+  if (!$(btn).hasClass("gt-item-active")) {
+    $(btn).addClass("gt-item-active");
+    if (callHandler === true) {
+      // TODO onHandler();
+    }
   }
 }
 
 function triggerDeactivate(btn, callHandler) {
-  $(btn).removeClass("gt-item-active");
-  if (callHandler === true) {
-    // TODO offHandler();
+  if ($(btn).hasClass("gt-dropdown") && $(btn).hasClass("gt-item-active")) {
+    handleDropdownClick(btn, null);
+    return;
+  }
+
+  if ($(btn).hasClass("gt-item-active")) {
+    $(btn).removeClass("gt-item-active");
+    if (callHandler === true) {
+      // TODO offHandler();
+    }
   }
 }
 
@@ -54,48 +69,55 @@ function triggerDeactivate(btn, callHandler) {
 
 $('.gt-dropdown').each(function(i, obj) {
   $(obj).click(function(event) {
-    var button = $(this);
-    var popup = $(".gt-submenu", button);
-    var visible = popup.is(":visible");
+    var button = $(event.target).closest(".gt-dropdown");
+    handleDropdownClick(button, $(event.target));
+  });
+});
 
-    if (visible) {
-      // We're closing the submenu
-      var clickedButton = event.target.id === button.attr('id');
-      var noAutoClose = $(".gt-submenu", button).hasClass("gt-no-auto-close");
-      if (!clickedButton && noAutoClose) {
-        return;
-      }
+function handleDropdownClick(button, target) {
+  var popup = $(".gt-submenu", button);
+  var visible = popup.is(":visible");
 
-      closeSubmenu(button);
-      $(document).unbind("click.gt-submenu");
-    } else {
-      // We're opening the submenu
-      $(document).trigger("click.gt-submenu", true); // close other submenus
+  if (visible) {
+    // We're closing the submenu
+    var clickedButton = target === null || target.attr('id') === button.attr('id');
+    var noAutoClose = $(".gt-submenu", button).hasClass("gt-no-auto-close");
+    if (!clickedButton && noAutoClose) {
+      return;
+    }
 
-      button.addClass("gt-item-active");
-      $(".mdl-tooltip").addClass("gt-noshow");
+    closeSubmenu(button);
+    $(document).unbind("click.gt-submenu");
+  } else {
+    // We're opening the submenu
 
-      var x = button.offset().top + 27;
-      var y = button.offset().left;
-      popup.css({top: x, left: y});
-      popup.removeClass("gt-noshow");
+    // close other submenus
+    $(".gt-submenu").addClass("gt-noshow");
+    $(".gt-item.gt-dropdown").removeClass("gt-item-active");
 
+    button.addClass("gt-item-active");
+    $(".mdl-tooltip").addClass("gt-noshow");
+
+    var x = button.offset().top + 27;
+    var y = button.offset().left;
+    popup.css({top: x, left: y});
+    popup.removeClass("gt-noshow");
+
+    setTimeout(function(){
       $(document).bind("click.gt-submenu", function(event, noTooltips) {
-        if (event.target.id === button.attr('id')) {
+        var target = $(event.target);
+        if (target.hasClass("gt-dropdown") || target.closest('.gt-submenu').length > 0) {
+          // Don't do anything if the other handler will be called
           return;
-        } else if ($(event.target).hasClass("gt-title")) {
-          var closestButton = $(event.target).closest(".gt-dropdown")[0];
-          if (closestButton.id === button.attr('id')) {
-            return;
-          }
         }
 
         closeSubmenu(button, noTooltips);
         $(document).unbind("click.gt-submenu");
       });
-    }
-  });
-});
+    }, 10); // wait to set click handler so it's not called instantly by this click
+
+  }
+}
 
 function closeSubmenu(menu, noTooltips) {
   menu.removeClass("gt-item-active");
@@ -103,6 +125,6 @@ function closeSubmenu(menu, noTooltips) {
 
   if (noTooltips !== true) {
     // Delay showing of tooltips to prevent flashing behavior
-    setTimeout(function(){ $(".mdl-tooltip").removeClass("gt-noshow"); }, 200);
+    setTimeout(function(){ $(".mdl-tooltip").removeClass("gt-noshow"); }, 250);
   }
 }

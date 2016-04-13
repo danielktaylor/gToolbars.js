@@ -9,6 +9,10 @@
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
 
+		<!-- Color Picker -->
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.js'></script>
+		<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.css' />
+
     <!-- Toolbar Library -->
     <link rel="stylesheet" type="text/css" href="gToolbars-0.2.0.css">
     <script defer src="gToolbars-0.2.0.js"></script>
@@ -41,39 +45,39 @@
       /* --- Toolbar Icons --- */
 
       #toolbar-undo {
-        background-image: url("./images/undo.png");
+        background-image: url("./icons/undo.png");
       }
 
       #toolbar-redo {
-        background-image: url("./images/redo.png");
+        background-image: url("./icons/redo.png");
       }
 
       #toolbar-text {
-        background-image: url("./images/insert-text.png");
+        background-image: url("./icons/insert-text.png");
       }
 
       #toolbar-shape {
-        background-image: url("./images/shapes.png");
+        background-image: url("./icons/shapes.png");
       }
 
       #toolbar-bold {
-        background-image: url("./images/bold.png");
+        background-image: url("./icons/bold.png");
       }
 
       #toolbar-italics {
-        background-image: url("./images/italics.png");
+        background-image: url("./icons/italics.png");
       }
 
       #toolbar-underline {
-        background-image: url("./images/underline.png");
+        background-image: url("./icons/underline.png");
       }
 
       #toolbar-fill-color {
-        background-image: url("./images/fill-color.png");
+        background-image: url("./icons/fill-color.png");
       }
 
       #toolbar-effects {
-        background-image: url("./images/effects.png");
+        background-image: url("./icons/effects.png");
       }
     </style>
 
@@ -81,21 +85,21 @@
       $(function() {
         /* sample event handlers for toolbar buttons */
         registerButton($("#toolbar-undo"), function() {
-            console.log("pressed undo");
+            // pressed undo
           });
 
         registerButton($("#toolbar-circle"), function() {
-            console.log("insert circle");
+            // insert circle
           });
 
         registerToggleButton($("#toolbar-bold"), function() {
-            console.log("set strong font weight");
+            // set strong font weight
           }, function() {
-            console.log("set normal font weight");
+            // set normal font weight
           });
 
         $("#toggle-bold").click(function() {
-            trigger($("#toolbar-bold"), true);
+            toggle($("#toolbar-bold"), true);
           });
 
         /* programmatically adding items to a dropdown */
@@ -103,6 +107,19 @@
         for (i = 0; i < 10; i++) {
           menu.append("<div class='gt-submenu-item'><span>Monospace</span></div>");
         }
+
+				/* --- Color Picker --- */
+				$("#color-picker").spectrum({
+					flat: true,
+					showInput: false,
+					change: function(color) {
+						//TODO doesn't work twice and affects other buttons
+            //TODO also doesnt work if you don't change the color
+						console.log("TRIGGERED");
+						triggerDeactivate($("#color-picker").closest(".gt-dropdown"));
+					}
+				});
+
       });
     </script>
 
@@ -131,11 +148,11 @@
 
           <div class="gt-submenu gt-noselect gt-noshow">
             <div class="gt-submenu-item" id="toolbar-circle">
-              <img src="images/circle.png" class="gt-submenu-icon">
+              <img src="icons/circle.png" class="gt-submenu-icon">
               Circle
             </div>
             <div class="gt-submenu-item" id="toolbar-rectangle">
-              <img src="images/rectangle.png" class="gt-submenu-icon">
+              <img src="icons/rectangle.png" class="gt-submenu-icon">
               Rectangle
             </div>
           </div><!-- /toolbar-submenu -->
@@ -150,11 +167,11 @@
 
           <div class="gt-submenu gt-noselect gt-noshow">
             <div class="gt-submenu-item" id="toolbar-send-backward">
-              <img src="images/send-backward.png" class="gt-submenu-icon">
+              <img src="icons/send-backward.png" class="gt-submenu-icon">
               Send Backward
             </div>
             <div class="gt-submenu-item" id="toolbar-bring-forward">
-              <img src="images/bring-forward.png" class="gt-submenu-icon">
+              <img src="icons/bring-forward.png" class="gt-submenu-icon">
               Bring Forward
             </div>
           </div><!-- /toolbar-submenu -->
@@ -164,9 +181,22 @@
 
         <div class="gt-separator"></div>
 
-        <div id="toolbar-font-size" class="gt-item gt-input">
+        <div id="toolbar-font-size" class="gt-item gt-input gt-dropdown">
           <input type="text" id="font-size" maxlength="3" class="gt-text-input">
           <div class="gt-arrow"></div>
+
+					<div class="gt-submenu gt-noselect gt-scrolling gt-noshow">
+						<div class="gt-submenu-item gt-default">
+							<span>10</span>
+						</div>
+						<div class="gt-submenu-item">
+							<span>12</span>
+						</div>
+						<div class="gt-submenu-item">
+							<span>14</span>
+						</div>
+					</div><!-- /toolbar-submenu -->
+
         </div>
         <div class="mdl-tooltip mdl-tooltip--large gt-noselect" for="toolbar-font-size">Font Size</div>
 
@@ -200,6 +230,9 @@
 
         <div id="toolbar-fill-color" class="gt-item gt-dropdown">
           <div class="gt-arrow"></div>
+					<div class="gt-submenu gt-noshow">
+            <input type='text' id="color-picker"/>
+          </div>
         </div>
         <div class="mdl-tooltip mdl-tooltip--large gt-noselect" for="toolbar-fill-color">Fill Color</div>
 
