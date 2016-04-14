@@ -13,7 +13,7 @@ gToolbars.js is a javascript library for creating toolbars that have the same vi
   <script defer src="gToolbars-0.2.0.js"></script>
   ```
 
-2. Add your toolbar to your HTML:
+2. Add a toolbar to the HTML:
 
   ```html
   <div class="gt-toolbar">
@@ -39,7 +39,7 @@ gToolbars.js is a javascript library for creating toolbars that have the same vi
   </div><!-- /toolbar -->
   ```
 
-3. Add images to your buttons:
+3. Add images to the buttons:
 
   ```css
   #toolbar-undo {
@@ -51,7 +51,7 @@ gToolbars.js is a javascript library for creating toolbars that have the same vi
   }
   ```
 
-4. Register your button actions:
+4. Register button actions:
 
   ```javascript
   registerButton($("#toolbar-undo"), function() {
