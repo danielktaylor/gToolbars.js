@@ -1,12 +1,81 @@
 # gToolbars.js
 
-Generating CSS:
-  sass gToolbars-0.2.0.scss > gToolbars-0.2.0.css
+gToolbars.js is a javascript library for creating toolbars that have the same visual style as Google Docs, Sheets, Slides, etc. It handles the CSS styles and dropdowns logistics for you. I made this library for my web-based image editor [Daring Logos](http://daringlogos.com/logo-editor.html), where you can see it in action.
+
+![Screenshot](screenshot.png)
+
+### Usage
+
+1. Include the CSS and JS files:
+
+  ```html
+  <link rel="stylesheet" type="text/css" href="gToolbars-0.2.0.css">
+  <script defer src="gToolbars-0.2.0.js"></script>
+  ```
+
+2. Add your toolbar to your HTML:
+
+  ```html
+  <div class="gt-toolbar">
+    <div id="toolbar-undo" class="gt-button"></div>
+    <div class="mdl-tooltip mdl-tooltip--large gt-noselect" for="toolbar-undo">Undo</div>
+    
+    <div class="gt-separator"></div>
+    
+    <div id="toolbar-shape" class="gt-button gt-dropdown">
+      <div class="gt-arrow"></div>
+      <div class="gt-submenu gt-noselect gt-noshow">
+        <div class="gt-submenu-item" id="toolbar-circle">
+          <img src="icons/circle.png" class="gt-submenu-icon">
+          Circle
+        </div>
+        <div class="gt-submenu-item" id="toolbar-rectangle">
+          <img src="icons/rectangle.png" class="gt-submenu-icon">
+          Rectangle
+        </div>
+      </div><!-- /toolbar-submenu -->
+    </div><!-- /toolbar-shape -->
+    <div class="mdl-tooltip mdl-tooltip--large gt-noselect" for="toolbar-shape">Insert Shape</div>
+  </div><!-- /toolbar -->
+  ```
+
+3. Add images to your buttons:
+
+  ```css
+  #toolbar-undo {
+    background-image: url("./icons/undo.png");
+  }
+  
+  #toolbar-shape {
+    background-image: url("./icons/shapes.png");
+  }
+  ```
+
+4. Register your button actions:
+
+  ```javascript
+  registerButton($("#toolbar-undo"), function() {
+    // pressed undo
+  });
+  ```
+
+### Dependencies
+
+- jQuery
+- [Material Design Lite](https://www.getmdl.io/) if you want tooltips
+- [Spectrum](https://bgrins.github.io/spectrum/) if you want a color picker
+
+### Generating the CSS
+
+If you make changes to the SASS, you'll need to regenerate the CSS:
+
+```
+sass gToolbars-0.2.0.scss > gToolbars-0.2.0.css
+```
 
 ### Open Issues
 
-- [x] ~~Minimize javascript~~
-- [ ] Switch to a single PNG image containing all icons
-- [ ] Remove Material Design Lite dependency by implementing tooltips
 - [ ] Remove jQuery dependency
+- [ ] Remove Material Design Lite dependency by implementing tooltips
 - [ ] Implement CommonJS and AMD compatibility
+- [ ] Switch to a single PNG image containing all icons
