@@ -78,6 +78,14 @@ function triggerDeactivate(button, callHandler) {
 // Handle all submenus
 
 $('.gt-dropdown').each(function(i, obj) {
+  // Show default item
+  var defaultItem = $(obj).first().find(".gt-submenu-item.gt-default");
+  if (defaultItem.length > 0) {
+    var text = defaultItem.first().text().trim();
+    $(obj).children(".gt-title").text(text);
+  }
+
+  // Click handler
   $(obj).click(function(event) {
     var button = $(event.target).closest(".gt-dropdown");
     handleDropdownClick(button, $(event.target));
