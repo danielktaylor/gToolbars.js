@@ -23,7 +23,7 @@
   overflow: hidden;
   z-index: 5; }
 
-.gt-item {
+.gt-button {
   float: left;
   min-width: 26px;
   height: 26px;
@@ -37,25 +37,25 @@
   color: #585858;
   font-weight: 400;
   line-height: 26px; }
-  .gt-item:hover {
+  .gt-button:hover {
     border: 1px solid #CCCCCC;
     box-shadow: 1px 1px 1px #dadada;
     cursor: default; }
-  .gt-item:active {
+  .gt-button:active {
     border: 1px solid #CCCCCC;
     box-shadow: 1px 1px 2px #b7b7b7 inset;
     background-color: #e8e8e8;
     border: 1px solid #cecece; }
 
-.gt-item-active {
+.gt-button-active {
   border: 1px solid #CCCCCC;
   box-shadow: 1px 1px 2px #b1b1b1 inset;
   background-color: #e9e7e7;
   border: 1px solid #CCCCCC; }
-  .gt-item-active:hover {
+  .gt-button-active:hover {
     border: 1px solid #CCCCCC;
     box-shadow: 1px 1px 2px #b1b1b1 inset; }
-  .gt-item-active:active {
+  .gt-button-active:active {
     border: 1px solid #CCCCCC;
     box-shadow: 1px 1px 2px #b1b1b1 inset; }
 

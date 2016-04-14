@@ -13,11 +13,11 @@ function registerToggleButton(button, onHandler, offHandler) {
   gToolbarsDeactivateHandlerList[btn.attr("id")] = offHandler;
 
   btn.click(function() {
-    if (btn.hasClass("gt-item-active")) {
-      btn.removeClass("gt-item-active");
+    if (btn.hasClass("gt-button-active")) {
+      btn.removeClass("gt-button-active");
       offHandler();
     } else {
-      btn.addClass("gt-item-active");
+      btn.addClass("gt-button-active");
       onHandler();
     }
   });
@@ -32,13 +32,13 @@ function toggle(button, callHandler) {
     return;
   }
 
-  if (btn.hasClass("gt-item-active")) {
-    btn.removeClass("gt-item-active");
+  if (btn.hasClass("gt-button-active")) {
+    btn.removeClass("gt-button-active");
     if (callHandler === true && gToolbarsDeactivateHandlerList[btn.attr("id")]) {
       gToolbarsDeactivateHandlerList[btn.attr("id")]();
     }
   } else {
-    btn.addClass("gt-item-active");
+    btn.addClass("gt-button-active");
     if (callHandler === true && gToolbarsActivateHandlerList[btn.attr("id")]) {
       gToolbarsActivateHandlerList[btn.attr("id")]();
     }
@@ -47,13 +47,13 @@ function toggle(button, callHandler) {
 
 function triggerActivate(button, callHandler) {
   var btn = $(button);
-  if (btn.hasClass("gt-dropdown") && !btn.hasClass("gt-item-active")) {
+  if (btn.hasClass("gt-dropdown") && !btn.hasClass("gt-button-active")) {
     handleDropdownClick(btn, null);
     return;
   }
 
-  if (!btn.hasClass("gt-item-active")) {
-    btn.addClass("gt-item-active");
+  if (!btn.hasClass("gt-button-active")) {
+    btn.addClass("gt-button-active");
     if (callHandler === true && gToolbarsActivateHandlerList[btn.attr("id")]) {
       gToolbarsActivateHandlerList[btn.attr("id")]();
     }
@@ -62,13 +62,13 @@ function triggerActivate(button, callHandler) {
 
 function triggerDeactivate(button, callHandler) {
   var btn = $(button);
-  if (btn.hasClass("gt-dropdown") && btn.hasClass("gt-item-active")) {
+  if (btn.hasClass("gt-dropdown") && btn.hasClass("gt-button-active")) {
     handleDropdownClick(btn, null);
     return;
   }
 
-  if (btn.hasClass("gt-item-active")) {
-    btn.removeClass("gt-item-active");
+  if (btn.hasClass("gt-button-active")) {
+    btn.removeClass("gt-button-active");
     if (callHandler === true && gToolbarsDeactivateHandlerList[btn.attr("id")]) {
       gToolbarsDeactivateHandlerList[btn.attr("id")]();
     }
@@ -103,9 +103,9 @@ function handleDropdownClick(button, target) {
 
     // close other submenus
     $(".gt-submenu").addClass("gt-noshow");
-    $(".gt-item.gt-dropdown").removeClass("gt-item-active");
+    $(".gt-button.gt-dropdown").removeClass("gt-button-active");
 
-    button.addClass("gt-item-active");
+    button.addClass("gt-button-active");
     $(".mdl-tooltip").addClass("gt-noshow");
 
     var x = button.offset().top + 27;
@@ -130,7 +130,7 @@ function handleDropdownClick(button, target) {
 }
 
 function closeSubmenu(menu, noTooltips) {
-  menu.removeClass("gt-item-active");
+  menu.removeClass("gt-button-active");
   menu.children(".gt-submenu").addClass("gt-noshow");
 
   if (noTooltips !== true) {

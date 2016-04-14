@@ -34,7 +34,7 @@ $toolbar-border-color: #BDBDBD;
   z-index: 5;
 }
 
-.gt-item {
+.gt-button {
   float:left;
   min-width: 26px;
   height: $toolbar-button-height;
@@ -63,7 +63,7 @@ $toolbar-border-color: #BDBDBD;
   }
 }
 
-.gt-item-active {
+.gt-button-active {
   border: 1px solid #CCCCCC;
   box-shadow: 1px 1px 2px #b1b1b1 inset;
   background-color: #e9e7e7;

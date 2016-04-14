@@ -18,7 +18,7 @@
     <script defer src="gToolbars-0.2.0.js"></script>
 
     <style type="text/css">
-      /* arbitrary div container for the toolbar */
+      /* --- arbitrary div container for the toolbar --- */
       #container {
         width: 80%;
         height: 200px;
@@ -32,7 +32,7 @@
         margin-left: 100px;
       }
 
-      /* --- Button Sizes --- */
+      /* --- button sizes --- */
 
       #toolbar-arrange {
         width: 70px;
@@ -42,7 +42,7 @@
         width: 100px;
       }
 
-      /* --- Toolbar Icons --- */
+      /* --- toolbar icons --- */
 
       #toolbar-undo {
         background-image: url("./icons/undo.png");
@@ -83,7 +83,7 @@
 
     <script>
       $(function() {
-        /* sample event handlers for toolbar buttons */
+        /* --- sample event handlers for toolbar buttons --- */
         registerButton($("#toolbar-undo"), function() {
             // pressed undo
           });
@@ -102,13 +102,13 @@
             toggle($("#toolbar-bold"), true);
           });
 
-        /* programmatically adding items to a dropdown */
+        /* --- programmatically adding items to a dropdown --- */
         var menu = $("#toolbar-font-family > .gt-submenu");
         for (i = 0; i < 10; i++) {
           menu.append("<div class='gt-submenu-item'><span>Monospace</span></div>");
         }
 
-				/* --- Color Picker --- */
+				/* --- color picker --- */
 				$("#color-picker").spectrum({
 					flat: true,
 					showInput: false,
@@ -132,18 +132,18 @@
 
       <div class="gt-toolbar">
 
-        <div id="toolbar-undo" class="gt-item"></div>
+        <div id="toolbar-undo" class="gt-button"></div>
         <div class="mdl-tooltip mdl-tooltip--large gt-noselect" for="toolbar-undo">Undo</div>
 
-        <div id="toolbar-redo" class="gt-item"></div>
+        <div id="toolbar-redo" class="gt-button"></div>
         <div class="mdl-tooltip mdl-tooltip--large gt-noselect" for="toolbar-redo">Redo</div>
 
         <div class="gt-separator"></div>
 
-        <div id="toolbar-text" class="gt-item"></div>
+        <div id="toolbar-text" class="gt-button"></div>
         <div class="mdl-tooltip mdl-tooltip--large gt-noselect" for="toolbar-text">Insert Text</div>
 
-        <div id="toolbar-shape" class="gt-item gt-dropdown">
+        <div id="toolbar-shape" class="gt-button gt-dropdown">
           <div class="gt-arrow"></div>
 
           <div class="gt-submenu gt-noselect gt-noshow">
@@ -161,7 +161,7 @@
 
         <div class="gt-separator"></div>
 
-        <div id="toolbar-arrange" class="gt-item gt-dropdown gt-noselect">
+        <div id="toolbar-arrange" class="gt-button gt-dropdown gt-noselect">
           <span class="gt-title">Arrange</span>
           <div class="gt-arrow"></div>
 
@@ -181,7 +181,7 @@
 
         <div class="gt-separator"></div>
 
-        <div id="toolbar-font-size" class="gt-item gt-input gt-dropdown">
+        <div id="toolbar-font-size" class="gt-button gt-input gt-dropdown">
           <input type="text" id="font-size" maxlength="3" class="gt-text-input">
           <div class="gt-arrow"></div>
 
@@ -202,7 +202,7 @@
 
         <div class="gt-separator"></div>
 
-        <div id="toolbar-font-family" class="gt-item gt-dropdown gt-noselect">
+        <div id="toolbar-font-family" class="gt-button gt-dropdown gt-noselect">
           <span class="gt-title" id="current-font"></span>
           <div class="gt-arrow"></div>
 
@@ -217,18 +217,18 @@
 
         <div class="gt-separator"></div>
 
-        <div id="toolbar-bold" class="gt-item"></div>
+        <div id="toolbar-bold" class="gt-button"></div>
         <div class="mdl-tooltip mdl-tooltip--large gt-noselect" for="toolbar-bold">Bold</div>
 
-        <div id="toolbar-italics" class="gt-item"></div>
+        <div id="toolbar-italics" class="gt-button"></div>
         <div class="mdl-tooltip mdl-tooltip--large gt-noselect" for="toolbar-italics">Italics</div>
 
-        <div id="toolbar-underline" class="gt-item"></div>
+        <div id="toolbar-underline" class="gt-button"></div>
         <div class="mdl-tooltip mdl-tooltip--large gt-noselect" for="toolbar-underline">Underline</div>
 
         <div class="gt-separator"></div>
 
-        <div id="toolbar-fill-color" class="gt-item gt-dropdown">
+        <div id="toolbar-fill-color" class="gt-button gt-dropdown">
           <div class="gt-arrow"></div>
 					<div class="gt-submenu gt-noshow">
             <input type='text' id="color-picker"/>
@@ -236,7 +236,7 @@
         </div>
         <div class="mdl-tooltip mdl-tooltip--large gt-noselect" for="toolbar-fill-color">Fill Color</div>
 
-        <div id="toolbar-effects" class="gt-item gt-dropdown">
+        <div id="toolbar-effects" class="gt-button gt-dropdown">
           <div class="gt-arrow"></div>
 
           <div class="gt-submenu gt-noselect gt-noshow gt-no-auto-close">
