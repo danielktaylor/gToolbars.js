@@ -1,16 +1,23 @@
-function registerButton(btn, handler) {
-  // TODO remember handlers
-  $(btn).click(handler);
+var gToolbarsActivateHandlerList = {}
+var gToolbarsDeactivateHandlerList = {}
+
+function registerButton(button, handler) {
+  var btn = $(button);
+  gToolbarsActivateHandlerList[btn.attr("id")] = handler;
+  btn.click(handler);
 }
 
-function registerToggleButton(btn, onHandler, offHandler) {
-  // TODO remember handlers
-  $(btn).click(function() {
-    if ($(btn).hasClass("gt-item-active")) {
-      $(btn).removeClass("gt-item-active");
+function registerToggleButton(button, onHandler, offHandler) {
+  var btn = $(button);
+  gToolbarsActivateHandlerList[btn.attr("id")] = onHandler;
+  gToolbarsDeactivateHandlerList[btn.attr("id")] = offHandler;
+
+  btn.click(function() {
+    if (btn.hasClass("gt-item-active")) {
+      btn.removeClass("gt-item-active");
       offHandler();
     } else {
-      $(btn).addClass("gt-item-active");
+      btn.addClass("gt-item-active");
       onHandler();
     }
   });
@@ -18,49 +25,52 @@ function registerToggleButton(btn, onHandler, offHandler) {
 
 // Programmatically press buttons
 
-function toggle(btn, callHandler) {
-  if ($(btn).hasClass("gt-dropdown")) {
+function toggle(button, callHandler) {
+  var btn = $(button);
+  if (btn.hasClass("gt-dropdown")) {
     handleDropdownClick(btn, null);
     return;
   }
 
-  if ($(btn).hasClass("gt-item-active")) {
-    $(btn).removeClass("gt-item-active");
-    if (callHandler === true) {
-      // TODO offHandler();
+  if (btn.hasClass("gt-item-active")) {
+    btn.removeClass("gt-item-active");
+    if (callHandler === true && gToolbarsDeactivateHandlerList[btn.attr("id")]) {
+      gToolbarsDeactivateHandlerList[btn.attr("id")]();
     }
   } else {
-    $(btn).addClass("gt-item-active");
-    if (callHandler === true) {
-      // TODO onHandler();
+    btn.addClass("gt-item-active");
+    if (callHandler === true && gToolbarsActivateHandlerList[btn.attr("id")]) {
+      gToolbarsActivateHandlerList[btn.attr("id")]();
     }
   }
 }
 
-function triggerActivate(btn, callHandler) {
-  if ($(btn).hasClass("gt-dropdown") && !$(btn).hasClass("gt-item-active")) {
+function triggerActivate(button, callHandler) {
+  var btn = $(button);
+  if (btn.hasClass("gt-dropdown") && !btn.hasClass("gt-item-active")) {
     handleDropdownClick(btn, null);
     return;
   }
 
-  if (!$(btn).hasClass("gt-item-active")) {
-    $(btn).addClass("gt-item-active");
-    if (callHandler === true) {
-      // TODO onHandler();
+  if (!btn.hasClass("gt-item-active")) {
+    btn.addClass("gt-item-active");
+    if (callHandler === true && gToolbarsActivateHandlerList[btn.attr("id")]) {
+      gToolbarsActivateHandlerList[btn.attr("id")]();
     }
   }
 }
 
-function triggerDeactivate(btn, callHandler) {
-  if ($(btn).hasClass("gt-dropdown") && $(btn).hasClass("gt-item-active")) {
+function triggerDeactivate(button, callHandler) {
+  var btn = $(button);
+  if (btn.hasClass("gt-dropdown") && btn.hasClass("gt-item-active")) {
     handleDropdownClick(btn, null);
     return;
   }
 
-  if ($(btn).hasClass("gt-item-active")) {
-    $(btn).removeClass("gt-item-active");
-    if (callHandler === true) {
-      // TODO offHandler();
+  if (btn.hasClass("gt-item-active")) {
+    btn.removeClass("gt-item-active");
+    if (callHandler === true && gToolbarsDeactivateHandlerList[btn.attr("id")]) {
+      gToolbarsDeactivateHandlerList[btn.attr("id")]();
     }
   }
 }
