@@ -1,5 +1,5 @@
-var gToolbarsActivateHandlerList = {}
-var gToolbarsDeactivateHandlerList = {}
+var gToolbarsActivateHandlerList = {};
+var gToolbarsDeactivateHandlerList = {};
 
 function registerButton(button, handler) {
   var btn = $(button);
