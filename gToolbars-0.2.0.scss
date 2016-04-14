@@ -101,6 +101,12 @@ $toolbar-border-color: #BDBDBD;
   padding-left: 4px;
 }
 
+.gt-input > input {
+  // TODO fix placement
+  // TODO handle enter key on input
+  color: #585858;
+}
+
 .gt-arrow {
   float: right;
   margin-top: 11px;
@@ -159,7 +165,7 @@ $toolbar-border-color: #BDBDBD;
   }
   &::-webkit-scrollbar-thumb {
     border-radius: 8px;
-    border: 2px solid #FAFAFA; /* should match background, can't be transparent */
+    border: 2px solid #FAFAFA;
     background-color: rgba(0, 0, 0, .5);
   }
   &::-webkit-scrollbar-track {

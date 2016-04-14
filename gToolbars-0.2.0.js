@@ -82,14 +82,26 @@ $('.gt-dropdown').each(function(i, obj) {
   var defaultItem = $(obj).first().find(".gt-submenu-item.gt-default");
   if (defaultItem.length > 0) {
     var text = defaultItem.first().text().trim();
-    $(obj).children(".gt-title").text(text);
+    var placeholder = $(obj).children(".gt-title")
+    if (placeholder.is("div,span")) {
+      placeholder.text(text);
+    } else if (placeholder.is("input")) {
+      placeholder.val(text);
+    }
+
   }
 
   // Update dropdown title when item is selected
   $(obj).find(".gt-submenu-item").each(function(j, item) {
     $(item).click(function() {
       // TODO doesn't handle the ones I'm adding dynamically - need another function?
-      $(this).closest(".gt-dropdown").children(".gt-title").text($(this).text());
+      // TODO not all of the menus (e.g. arrange) should have this feature
+      var placeholder = $(this).closest(".gt-dropdown").children(".gt-title");
+      if (placeholder.is("div,span")) {
+        placeholder.text($(this).text().trim());
+      } else if (placeholder.is("input")) {
+        placeholder.val($(this).text().trim());
+      }
     });
   });
 
