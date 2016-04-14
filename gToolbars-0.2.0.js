@@ -85,7 +85,15 @@ $('.gt-dropdown').each(function(i, obj) {
     $(obj).children(".gt-title").text(text);
   }
 
-  // Click handler
+  // Update dropdown title when item is selected
+  $(obj).find(".gt-submenu-item").each(function(j, item) {
+    $(item).click(function() {
+      // TODO doesn't handle the ones I'm adding dynamically - need another function?
+      $(this).closest(".gt-dropdown").children(".gt-title").text($(this).text());
+    });
+  });
+
+  // Button click handler
   $(obj).click(function(event) {
     var button = $(event.target).closest(".gt-dropdown");
     handleDropdownClick(button, $(event.target));
