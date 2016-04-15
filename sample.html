@@ -111,12 +111,13 @@
 				/* --- color picker --- */
 				$("#color-picker").spectrum({
 					flat: true,
-					showInput: false,
+          preferredFormat: "hex",
+          showInput: false,
+          color: 'white',
+          showButtons: false,
+          clickoutFiresChange: false,
 					change: function(color) {
-						//TODO doesn't work twice and affects other buttons
-            //TODO also doesnt work if you don't change the color
-						console.log("TRIGGERED");
-						triggerDeactivate($("#color-picker").closest(".gt-dropdown"));
+						// don't use this - it's broken
 					}
 				});
 

@@ -102,7 +102,7 @@ $('.gt-dropdown').each(function(i, obj) {
   var defaultItem = $(obj).first().find(".gt-submenu-item.gt-default");
   if (defaultItem.length > 0) {
     var text = defaultItem.first().text().trim();
-    var placeholder = $(obj).children(".gt-title.gt-autoupdate")
+    var placeholder = $(obj).children(".gt-title.gt-autoupdate");
     if (placeholder.is("div,span")) {
       placeholder.text(text);
     } else if (placeholder.is("input")) {
