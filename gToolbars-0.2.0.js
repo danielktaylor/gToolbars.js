@@ -75,8 +75,17 @@ function triggerDeactivate(button, callHandler) {
   }
 }
 
-// Handle all submenus
+// Handle enter key on input boxes
+$('.gt-input > input').each(function(i, obj) {
+  $(this).keyup(function (e) {
+    if (e.keyCode == 13) {
+        $(this).blur();
+        closeSubmenu($(this).closest(".gt-button"), false);
+    }
+  });
+});
 
+// Handle all submenus
 $('.gt-dropdown').each(function(i, obj) {
   // Show default item
   var defaultItem = $(obj).first().find(".gt-submenu-item.gt-default");
