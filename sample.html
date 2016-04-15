@@ -103,9 +103,9 @@
           });
 
         /* --- programmatically adding items to a dropdown --- */
-        var menu = $("#toolbar-font-family > .gt-submenu");
+        var button = $("#toolbar-font-family");
         for (i = 0; i < 10; i++) {
-          menu.append("<div class='gt-submenu-item'><span>Monospace</span></div>");
+          insertSubmenuItem(button, $("<div class='gt-submenu-item'><span>Monospace</span></div>"));
         }
 
 				/* --- color picker --- */
@@ -182,7 +182,7 @@
         <div class="gt-separator"></div>
 
         <div id="toolbar-font-size" class="gt-button gt-input gt-dropdown">
-          <input type="text" id="font-size" maxlength="3" class="gt-text-input gt-title">
+          <input type="text" id="font-size" maxlength="3" class="gt-text-input gt-title gt-autoupdate">
           <div class="gt-arrow"></div>
 
 					<div class="gt-submenu gt-noselect gt-scrolling gt-noshow">
@@ -203,7 +203,7 @@
         <div class="gt-separator"></div>
 
         <div id="toolbar-font-family" class="gt-button gt-dropdown gt-noselect">
-          <span class="gt-title" id="current-font"></span>
+          <span class="gt-title gt-autoupdate" id="current-font"></span>
           <div class="gt-arrow"></div>
 
           <div class="gt-submenu gt-noselect gt-scrolling gt-noshow">

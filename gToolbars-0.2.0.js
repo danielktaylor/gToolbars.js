@@ -1,6 +1,8 @@
 var gToolbarsActivateHandlerList = {};
 var gToolbarsDeactivateHandlerList = {};
 
+/* --- register toolbar buttons --- */
+
 function registerButton(button, handler) {
   var btn = $(button);
   gToolbarsActivateHandlerList[btn.attr("id")] = handler;
@@ -23,7 +25,14 @@ function registerToggleButton(button, onHandler, offHandler) {
   });
 }
 
-// Programmatically press buttons
+function insertSubmenuItem(btn, div) {
+  var menu = $(btn).children(".gt-submenu").first();
+  menu.append(div.click(function() {
+    updateTitle($(this));
+  }));
+}
+
+/* --- programmatically press buttons --- */
 
 function toggle(button, callHandler) {
   var btn = $(button);
@@ -75,6 +84,8 @@ function triggerDeactivate(button, callHandler) {
   }
 }
 
+/* --- internal logic --- */
+
 // Handle enter key on input boxes
 $('.gt-input > input').each(function(i, obj) {
   $(this).keyup(function (e) {
@@ -91,7 +102,7 @@ $('.gt-dropdown').each(function(i, obj) {
   var defaultItem = $(obj).first().find(".gt-submenu-item.gt-default");
   if (defaultItem.length > 0) {
     var text = defaultItem.first().text().trim();
-    var placeholder = $(obj).children(".gt-title")
+    var placeholder = $(obj).children(".gt-title.gt-autoupdate")
     if (placeholder.is("div,span")) {
       placeholder.text(text);
     } else if (placeholder.is("input")) {
@@ -103,14 +114,7 @@ $('.gt-dropdown').each(function(i, obj) {
   // Update dropdown title when item is selected
   $(obj).find(".gt-submenu-item").each(function(j, item) {
     $(item).click(function() {
-      // TODO doesn't handle the ones I'm adding dynamically - need another function?
-      // TODO not all of the menus (e.g. arrange) should have this feature
-      var placeholder = $(this).closest(".gt-dropdown").children(".gt-title");
-      if (placeholder.is("div,span")) {
-        placeholder.text($(this).text().trim());
-      } else if (placeholder.is("input")) {
-        placeholder.val($(this).text().trim());
-      }
+      updateTitle($(this));
     });
   });
 
@@ -173,5 +177,14 @@ function closeSubmenu(menu, noTooltips) {
   if (noTooltips !== true) {
     // Delay showing of tooltips to prevent flashing behavior
     setTimeout(function(){ $(".mdl-tooltip").removeClass("gt-noshow"); }, 250);
+  }
+}
+
+function updateTitle(element) {
+  var placeholder = element.closest(".gt-dropdown").children(".gt-title.gt-autoupdate");
+  if (placeholder.is("div,span")) {
+    placeholder.text(element.text().trim());
+  } else if (placeholder.is("input")) {
+    placeholder.val(element.text().trim());
   }
 }
