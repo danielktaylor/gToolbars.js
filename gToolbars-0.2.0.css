@@ -77,6 +77,9 @@
   padding-left: 4px; }
 
 .gt-input > input {
+  width: 36px;
+  height: 23px;
+  font-size: 14px;
   color: #585858; }
 
 .gt-arrow {

@@ -102,7 +102,9 @@ $toolbar-border-color: #BDBDBD;
 }
 
 .gt-input > input {
-  // TODO fix placement
+  width: 36px;
+  height: $toolbar-button-height - 3;
+  font-size: 14px;
   color: #585858;
 }
 
