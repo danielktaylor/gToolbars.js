@@ -65,6 +65,16 @@ gToolbars.js is a javascript library for creating toolbars that have the same vi
 - [Material Design Lite](https://www.getmdl.io/) if you want tooltips
 - [Spectrum](https://bgrins.github.io/spectrum/) if you want a color picker
 
+### Browser Support
+
+- [X] Firefox 44
+- [X] Chrome 49
+- [X] Safari 9.1
+- [X] IE 9+ (with correct doctype)
+- [X] Mobile Safari
+- [ ] **Untested:** Android Browser
+- [ ] **Untested:** IE 8
+
 ### Generating the CSS
 
 If you make changes to the SASS, you'll need to regenerate the CSS:
