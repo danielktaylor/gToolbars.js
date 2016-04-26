@@ -9,9 +9,9 @@
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
 
-		<!-- Color Picker -->
-		<script src='https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.js'></script>
-		<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.css' />
+    <!-- Color Picker -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.js'></script>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.css' />
 
     <!-- Toolbar Library -->
     <link rel="stylesheet" type="text/css" href="gToolbars-0.2.0.css">
@@ -108,18 +108,18 @@
           insertSubmenuItem(button, $("<div class='gt-submenu-item'><span>Monospace</span></div>"));
         }
 
-				/* --- color picker --- */
-				$("#color-picker").spectrum({
-					flat: true,
+        /* --- color picker --- */
+        $("#color-picker").spectrum({
+          flat: true,
           preferredFormat: "hex",
           showInput: false,
           color: 'white',
           showButtons: false,
           clickoutFiresChange: false,
-					change: function(color) {
-						// don't use this - it's broken
-					}
-				});
+          change: function(color) {
+            // don't use this - it's broken
+          }
+        });
 
       });
     </script>
@@ -186,17 +186,17 @@
           <input type="text" id="font-size" maxlength="3" class="gt-text-input gt-title gt-autoupdate">
           <div class="gt-arrow"></div>
 
-					<div class="gt-submenu gt-noselect gt-scrolling gt-noshow">
-						<div class="gt-submenu-item">
-							<span>10</span>
-						</div>
-						<div class="gt-submenu-item gt-default">
-							<span>12</span>
-						</div>
-						<div class="gt-submenu-item">
-							<span>14</span>
-						</div>
-					</div><!-- /toolbar-submenu -->
+          <div class="gt-submenu gt-noselect gt-scrolling gt-noshow">
+            <div class="gt-submenu-item">
+              <span>10</span>
+            </div>
+            <div class="gt-submenu-item gt-default">
+              <span>12</span>
+            </div>
+            <div class="gt-submenu-item">
+              <span>14</span>
+            </div>
+          </div><!-- /toolbar-submenu -->
 
         </div>
         <div class="mdl-tooltip mdl-tooltip--large gt-noselect" for="toolbar-font-size">Font Size</div>
@@ -234,7 +234,7 @@
 
         <div id="toolbar-fill-color" class="gt-button gt-dropdown">
           <div class="gt-arrow"></div>
-					<div class="gt-submenu gt-noshow">
+          <div class="gt-submenu gt-noshow">
             <input type='text' id="color-picker"/>
           </div>
         </div>
