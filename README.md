@@ -1,6 +1,6 @@
 # gToolbars.js
 
-gToolbars.js is a javascript library for creating toolbars that have the same visual style as Google Docs, Sheets, Slides, etc. It handles the CSS styles and dropdowns logistics for you. I made this library for my web-based image editor [Daring Logos](http://daringlogos.com/logo-editor.html), where you can see it in action.
+gToolbars.js is a javascript library for creating toolbars that have the same visual style as Google Docs, Sheets, Slides, etc. It handles the CSS styles and dropdowns logistics for you. I made this library for my web-based image editor.
 
 ![Screenshot](screenshot.png)
 
